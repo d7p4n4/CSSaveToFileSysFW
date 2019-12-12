@@ -1,13 +1,8 @@
 ﻿using CSLibAc4yObjectDBCap;
 using CSLibAc4yObjectObjectService;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -15,20 +10,30 @@ namespace CSSaveToFileSysFW
 {
     class SaveToFileSysFW
     {
+        
+        public SqlConnection sqlConn;
+        public string TemplateName;
+        public string outPath;
+        public string outPathProcess;
+        public string outPathSuccess;
+        public string outPathError;
 
-        public string conn = ConfigurationManager.AppSettings["connString"];
-        public static SqlConnection sqlConn = new SqlConnection(ConfigurationManager.AppSettings["connString"]);
-        public static SqlConnection sqlConnXML = new SqlConnection(ConfigurationManager.AppSettings["connStringXML"]);
-        public static string TemplateName = ConfigurationManager.AppSettings["TemplateName"];
-        public static string outPath = ConfigurationManager.AppSettings["Path"];
-        public static string outPathProcess = ConfigurationManager.AppSettings["PathProcess"];
-        public static string outPathSuccess = ConfigurationManager.AppSettings["PathSuccess"];
-        public static string outPathError = ConfigurationManager.AppSettings["PathError"];
+        public SaveToFileSysFW() { }
 
+        public SaveToFileSysFW(SqlConnection newSqlConn, string newTemp, string newOut, string newProc, string newSucc, string newErr)
+        {
+            sqlConn = newSqlConn;
+            TemplateName = newTemp;
+            outPath = newOut;
+            outPathProcess = newProc;
+            outPathSuccess = newSucc;
+            outPathError = newErr;
+
+            sqlConn.Open();
+        }
 
         public void WriteOutAc4yObjectHome()
         {
-            sqlConn.Open();
             ListInstanceByNameResponse listInstanceByNameResponse =
                 new Ac4yObjectObjectService(sqlConn).ListInstanceByName(
                     new ListInstanceByNameRequest() { TemplateName = TemplateName }
@@ -70,8 +75,6 @@ namespace CSSaveToFileSysFW
 
         public void Load()
         {
-
-            sqlConn.Open();
             Ac4yObjectObjectService ac4YObjectObjectService = new Ac4yObjectObjectService(sqlConn);
 
             try
