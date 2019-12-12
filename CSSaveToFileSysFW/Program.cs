@@ -1,7 +1,4 @@
 ﻿using CSAc4yService.Class;
-using CSLibAc4yObjectDBCap;
-using CSLibAc4yObjectObjectService;
-using d7p4n4Namespace.Final.Class;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

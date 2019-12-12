@@ -1,5 +1,5 @@
-﻿using CSLibAc4yObjectDBCap;
-using CSLibAc4yObjectObjectService;
+﻿using CSAc4yObjectDBCap;
+using CSAc4yObjectObjectService.Object;
 using System;
 using System.Data.SqlClient;
 using System.IO;
@@ -41,9 +41,9 @@ namespace CSSaveToFileSysFW
                     new ListInstanceByNameRequest() { TemplateName = TemplateName }
                 );
 
-            foreach (var element in listInstanceByNameResponse.Ac4yObjectHomeList)
+            foreach (var element in listInstanceByNameResponse.Ac4yObjectList)
             {
-                string xml = serialize(element, typeof(Ac4yObjectHome));
+                string xml = serialize(element, typeof(Ac4yObject));
 
                 writeOut(xml, element.SimpledHumanId + "@" + element.TemplateHumanId + "@Ac4yObjectHome", outPath);
             }
@@ -95,7 +95,7 @@ namespace CSSaveToFileSysFW
 
                     string xml = readIn(_filename, outPathProcess);
 
-                    Ac4yObjectHome tabla = (Ac4yObjectHome)deser(xml, typeof(Ac4yObjectHome));
+                    Ac4yObject tabla = (Ac4yObject)deser(xml, typeof(Ac4yObject));
 
                     SetByNamesResponse response = ac4YObjectObjectService.SetByNames(
                         new SetByNamesRequest() { TemplateName = TemplateName, Name = tabla.SimpledHumanId }

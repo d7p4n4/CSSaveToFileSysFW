@@ -1,4 +1,4 @@
-﻿using CSLibAc4yObjectObjectService;
+﻿using CSAc4yObjectObjectService.Object;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -38,7 +38,7 @@ namespace CSSaveToFileSysFW
                     }
                 }
             }
-            foreach (var tabla in listInstanceByNameResponse.Ac4yObjectHomeList)
+            foreach (var tabla in listInstanceByNameResponse.Ac4yObjectList)
             {
                 foreach (var xml in guids)
                 {

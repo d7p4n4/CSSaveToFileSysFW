@@ -38,35 +38,20 @@
   <ItemGroup>
     <Reference Include="CSAc4yFW, Version=1.2019.1206.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\FrameworkLibs\CSAc4yFW\bin\Debug\CSAc4yFW.dll</HintPath>
+      <HintPath>C:\Library\LPCSharp\CSAc4yFW.dll</HintPath>
     </Reference>
-    <Reference Include="CSAc4yLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSAc4yLib.1.0.0\lib\netstandard2.0\CSAc4yLib.dll</HintPath>
+    <Reference Include="CSAc4yObjectDBCapFW">
+      <HintPath>C:\Library\LPCSharp\CSAc4yObjectDBCapFW.dll</HintPath>
+    </Reference>
+    <Reference Include="CSAc4yObjectObjectServiceFW">
+      <HintPath>C:\Library\LPCSharp\CSAc4yObjectObjectServiceFW.dll</HintPath>
+    </Reference>
+    <Reference Include="CSAc4yObjectServiceWF">
+      <HintPath>C:\Library\LPCSharp\CSAc4yObjectServiceWF.dll</HintPath>
     </Reference>
     <Reference Include="CSAc4yServiceFW, Version=1.2019.1206.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\FrameworkLibs\CSAc4yServiceFW\bin\Debug\CSAc4yServiceFW.dll</HintPath>
-    </Reference>
-    <Reference Include="CSAc4yServiceLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSAc4yServiceLib.1.0.0\lib\netstandard2.0\CSAc4yServiceLib.dll</HintPath>
-    </Reference>
-    <Reference Include="CSAc4yServiceObjectFinalLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSAc4yServiceObjectFinalLib.1.0.0\lib\netstandard2.0\CSAc4yServiceObjectFinalLib.dll</HintPath>
-    </Reference>
-    <Reference Include="CSGUIDLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSGUIDLib.1.0.0\lib\netstandard2.0\CSGUIDLib.dll</HintPath>
-    </Reference>
-    <Reference Include="CSLibAc4yObjectDBCapFW">
-      <HintPath>..\..\..\FrameworkLibs\CSLibAc4yObjectDBCapFW\bin\Debug\CSLibAc4yObjectDBCapFW.dll</HintPath>
-    </Reference>
-    <Reference Include="CSLibAc4yObjectObjectServiceFW">
-      <HintPath>..\..\..\FrameworkLibs\CSLibAc4yObjectObjectServiceFW\bin\Debug\CSLibAc4yObjectObjectServiceFW.dll</HintPath>
-    </Reference>
-    <Reference Include="CSModulFinal, Version=1.2019.1203.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSModulFinal.1.2019.1203.1\lib\netstandard2.0\CSModulFinal.dll</HintPath>
-    </Reference>
-    <Reference Include="CSModulPersistentCoreLib, Version=1.2019.1203.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSModulPersistentCoreLib.1.2019.1203.2\lib\netstandard2.0\CSModulPersistentCoreLib.dll</HintPath>
+      <HintPath>C:\Library\LPCSharp\CSAc4yServiceFW.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
