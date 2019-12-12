@@ -36,6 +36,8 @@ namespace CSSaveToFileSysFW
 
         public void WriteOutAc4yObjectHome()
         {
+            StringToPascalCase stringToPascalCase = new StringToPascalCase();
+
             ListInstanceByNameResponse listInstanceByNameResponse =
                 new Ac4yObjectObjectService(sqlConn).ListInstanceByName(
                     new ListInstanceByNameRequest() { TemplateName = TemplateName }
@@ -44,14 +46,15 @@ namespace CSSaveToFileSysFW
             foreach (var element in listInstanceByNameResponse.Ac4yObjectList)
             {
                 string xml = serialize(element, typeof(Ac4yObject));
+                string templateSimpledId = stringToPascalCase.Convert(element.TemplatePublicHumanId).ToUpper();
 
-                writeOut(xml, element.SimpledHumanId + "@" + element.TemplateHumanId + "@Ac4yObjectHome", outPath);
+                writeOut(xml, element.SimpledHumanId + "@" + templateSimpledId + "@Ac4yObject", outPath);
             }
 
         }
 
 
-        public static void writeOut(string text, string fileName, string outputPath)
+        public void writeOut(string text, string fileName, string outputPath)
         {
             File.WriteAllText(outputPath + fileName + ".xml", text);
 
@@ -95,10 +98,10 @@ namespace CSSaveToFileSysFW
 
                     string xml = readIn(_filename, outPathProcess);
 
-                    Ac4yObject tabla = (Ac4yObject)deser(xml, typeof(Ac4yObject));
+                    Ac4yObject tabla = (Ac4yObject)Deserialize(xml, typeof(Ac4yObject));
 
-                    SetByNamesResponse response = ac4YObjectObjectService.SetByNames(
-                        new SetByNamesRequest() { TemplateName = TemplateName, Name = tabla.SimpledHumanId }
+                    SetByGuidAndNamesResponse response = ac4YObjectObjectService.SetByGuidAndNames(
+                        new SetByGuidAndNamesRequest() { TemplateName = tabla.TemplateHumanId, Name = tabla.HumanId, Guid = tabla.GUID }
                         );
 
                     if (response.Result.Code.Equals("1"))
@@ -119,7 +122,7 @@ namespace CSSaveToFileSysFW
             }
         }
 
-        public Object deser(string xml, Type anyType)
+        public Object Deserialize(string xml, Type anyType)
         {
             Object result = null;
 

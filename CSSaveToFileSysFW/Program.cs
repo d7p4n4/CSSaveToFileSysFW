@@ -32,19 +32,20 @@ namespace CSSaveToFileSysFW
             {
                 GetXmls getXmls = new GetXmls();
                 SaveToFileSysFW saveToFileSysFW = new SaveToFileSysFW(conn, TemplateName, outPath, outPathProcess, outPathSuccess, outPathError);
-                
-                saveToFileSysFW.Load();
-                /*
+
+                //saveToFileSysFW.Load();
+                //saveToFileSysFW.WriteOutAc4yObjectHome();
+                sqlConnXML.Open();
                 List<SerializationObject> xmls = getXmls.GetXmlsMethod(sqlConn, sqlConnXML, TemplateName);
                 foreach(var xml in xmls)
                 {
-                    writeOut(xml.xml, xml.fileName, outPath);
+                    saveToFileSysFW.writeOut(xml.xml, xml.fileName, outPath);
                 }
-                */
+                
             }
             catch(Exception exception)
             {
-                _naplo.Error(exception.StackTrace);
+                _naplo.Error(exception.Message);
             }
 
         }

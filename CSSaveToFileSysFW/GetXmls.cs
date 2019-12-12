@@ -13,6 +13,9 @@ namespace CSSaveToFileSysFW
     {
         public List<SerializationObject> GetXmlsMethod(SqlConnection conn, SqlConnection connXML, string templateName)
         {
+            conn.Open();
+            StringToPascalCase stringToPascalCase = new StringToPascalCase();
+
             List<SerializationObject> xmls = new List<SerializationObject>();
             List<Xmls> guids = new List<Xmls>();
 
@@ -44,8 +47,9 @@ namespace CSSaveToFileSysFW
                 {
                     if (xml.guid.Equals(tabla.GUID))
                     {
+                        string templateSimpledId = stringToPascalCase.Convert(templateName).ToUpper();
                         SerializationObject serializationObject = new SerializationObject() {
-                            fileName = tabla.SimpledHumanId + "@" + templateName,
+                            fileName = tabla.SimpledHumanId + "@" + templateSimpledId,
                             xml = xml.serialization
                         };
                         xmls.Add(serializationObject);
