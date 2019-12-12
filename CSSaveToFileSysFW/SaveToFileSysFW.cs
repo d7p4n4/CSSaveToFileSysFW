@@ -8,10 +8,11 @@ using System.Xml.Serialization;
 
 namespace CSSaveToFileSysFW
 {
-    class SaveToFileSysFW
+    public class SaveToFileSysFW
     {
         
         public SqlConnection sqlConn;
+        public string sqlConnectionString;
         public string TemplateName;
         public string outPath;
         public string outPathProcess;
@@ -20,15 +21,16 @@ namespace CSSaveToFileSysFW
 
         public SaveToFileSysFW() { }
 
-        public SaveToFileSysFW(SqlConnection newSqlConn, string newTemp, string newOut, string newProc, string newSucc, string newErr)
+        public SaveToFileSysFW(string newSqlConn, string newTemp, string newOut, string newProc, string newSucc, string newErr)
         {
-            sqlConn = newSqlConn;
+            sqlConnectionString = newSqlConn;
             TemplateName = newTemp;
             outPath = newOut;
             outPathProcess = newProc;
             outPathSuccess = newSucc;
             outPathError = newErr;
 
+            sqlConn = new SqlConnection(sqlConnectionString);
             sqlConn.Open();
         }
 

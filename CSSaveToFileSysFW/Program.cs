@@ -20,7 +20,7 @@ namespace CSSaveToFileSysFW
         private static readonly log4net.ILog _naplo = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
-        public string conn = ConfigurationManager.AppSettings["connString"];
+        public static string conn = ConfigurationManager.AppSettings["connString"];
         public static SqlConnection sqlConn = new SqlConnection(ConfigurationManager.AppSettings["connString"]);
         public static SqlConnection sqlConnXML = new SqlConnection(ConfigurationManager.AppSettings["connStringXML"]);
         public static string TemplateName = ConfigurationManager.AppSettings["TemplateName"];
@@ -34,7 +34,7 @@ namespace CSSaveToFileSysFW
             try
             {
                 GetXmls getXmls = new GetXmls();
-                SaveToFileSysFW saveToFileSysFW = new SaveToFileSysFW(sqlConn, TemplateName, outPath, outPathProcess, outPathSuccess, outPathError);
+                SaveToFileSysFW saveToFileSysFW = new SaveToFileSysFW(conn, TemplateName, outPath, outPathProcess, outPathSuccess, outPathError);
                 
                 saveToFileSysFW.Load();
                 /*
