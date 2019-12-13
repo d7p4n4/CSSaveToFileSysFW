@@ -1,6 +1,7 @@
 ﻿using CSAc4yObjectDBCap;
 using CSAc4yObjectObjectService.Object;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Xml;
@@ -34,6 +35,25 @@ namespace CSSaveToFileSysFW
             sqlConn.Open();
         }
 
+        public SaveToFileSysFW(string newSqlConn, string newTemp, string newOut)
+        {
+            sqlConnectionString = newSqlConn;
+            TemplateName = newTemp;
+            outPath = newOut;
+
+            sqlConn = new SqlConnection(sqlConnectionString);
+            sqlConn.Open();
+        }
+        
+        public SaveToFileSysFW(string newSqlConn, string newOut)
+        {
+            sqlConnectionString = newSqlConn;
+            outPath = newOut;
+
+            sqlConn = new SqlConnection(sqlConnectionString);
+            sqlConn.Open();
+        }
+
         public void WriteOutAc4yObject()
         {
             StringToPascalCase stringToPascalCase = new StringToPascalCase();
@@ -53,6 +73,28 @@ namespace CSSaveToFileSysFW
 
         }
 
+        public List<string> WriteOutAc4yObjectNameList()
+        {
+            StringToPascalCase stringToPascalCase = new StringToPascalCase();
+            List<string> names = new List<string>();
+
+            ListInstanceByNameResponse listInstanceByNameResponse =
+                new Ac4yObjectObjectService(sqlConn).ListInstanceByName(
+                    new ListInstanceByNameRequest() { TemplateName = TemplateName }
+                );
+
+            foreach (var element in listInstanceByNameResponse.Ac4yObjectList)
+            {
+                string xml = serialize(element, typeof(Ac4yObject));
+                string templateSimpledId = stringToPascalCase.Convert(element.TemplatePublicHumanId).ToUpper();
+                string name = element.SimpledHumanId + "@" + templateSimpledId + "@Ac4yObject";
+                names.Add(name);
+
+                writeOut(xml, name, outPath);
+            }
+
+            return names;
+        }
 
         public void WriteOutAc4yObjectAll()
         {
