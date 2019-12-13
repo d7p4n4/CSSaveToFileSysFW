@@ -34,7 +34,7 @@ namespace CSSaveToFileSysFW
             sqlConn.Open();
         }
 
-        public void WriteOutAc4yObjectHome()
+        public void WriteOutAc4yObject()
         {
             StringToPascalCase stringToPascalCase = new StringToPascalCase();
 
@@ -53,6 +53,25 @@ namespace CSSaveToFileSysFW
 
         }
 
+
+        public void WriteOutAc4yObjectAll()
+        {
+            StringToPascalCase stringToPascalCase = new StringToPascalCase();
+
+            ListInstanceResponse listInstanceResponse =
+                new Ac4yObjectObjectService(sqlConn).ListInstance(
+                    new ListInstanceRequest() { }
+                );
+
+            foreach (var element in listInstanceResponse.Ac4yObjectList)
+            {
+                string xml = serialize(element, typeof(Ac4yObject));
+                string templateSimpledId = stringToPascalCase.Convert(element.TemplatePublicHumanId).ToUpper();
+
+                writeOut(xml, element.SimpledHumanId + "@" + templateSimpledId + "@Ac4yObject", outPath);
+            }
+
+        }
 
         public void writeOut(string text, string fileName, string outputPath)
         {
