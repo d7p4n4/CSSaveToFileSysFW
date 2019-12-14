@@ -33,7 +33,7 @@ namespace CSSaveToFileSysFW
                 SaveToFileSysFW saveToFileSysFW = new SaveToFileSysFW(conn, TemplateName, outPath, outPathProcess, outPathSuccess, outPathError);
 
                 //saveToFileSysFW.Load();
-                saveToFileSysFW.WriteOutAc4yObjectAll();
+                saveToFileSysFW.WriteOutAc4yObject();
                 //saveToFileSysFW.WriteOutAc4yObjectHome();
                 //sqlConnXML.Open();
                 /*
