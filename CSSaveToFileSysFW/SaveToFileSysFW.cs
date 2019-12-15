@@ -12,7 +12,7 @@ namespace CSSaveToFileSysFW
     public class SaveToFileSysFW
     {
         
-        public SqlConnection sqlConn;
+        public SqlConnection sqlConnection;
         public string sqlConnectionString;
         public string TemplateName;
         public string outPath;
@@ -22,17 +22,17 @@ namespace CSSaveToFileSysFW
 
         public SaveToFileSysFW() { }
 
-        public SaveToFileSysFW(string newSqlConn, string newTemp, string newOut, string newProc, string newSucc, string newErr)
+        public SaveToFileSysFW(string newSqlConnectionString, string newTemp, string newOut, string newProc, string newSucc, string newErr)
         {
-            sqlConnectionString = newSqlConn;
+            sqlConnectionString = newSqlConnectionString;
             TemplateName = newTemp;
             outPath = newOut;
             outPathProcess = newProc;
             outPathSuccess = newSucc;
             outPathError = newErr;
 
-            sqlConn = new SqlConnection(sqlConnectionString);
-            sqlConn.Open();
+            sqlConnection = new SqlConnection(sqlConnectionString);
+            sqlConnection.Open();
         }
 
         public SaveToFileSysFW(string newSqlConn, string newTemp, string newOut)
@@ -41,8 +41,8 @@ namespace CSSaveToFileSysFW
             TemplateName = newTemp;
             outPath = newOut;
 
-            sqlConn = new SqlConnection(sqlConnectionString);
-            sqlConn.Open();
+            sqlConnection = new SqlConnection(sqlConnectionString);
+            sqlConnection.Open();
         }
         
         public SaveToFileSysFW(string newSqlConn, string newOut)
@@ -50,8 +50,8 @@ namespace CSSaveToFileSysFW
             sqlConnectionString = newSqlConn;
             outPath = newOut;
 
-            sqlConn = new SqlConnection(sqlConnectionString);
-            sqlConn.Open();
+            sqlConnection = new SqlConnection(sqlConnectionString);
+            sqlConnection.Open();
         }
 
         public void WriteOutAc4yObject()
@@ -59,7 +59,7 @@ namespace CSSaveToFileSysFW
             StringToPascalCase stringToPascalCase = new StringToPascalCase();
 
             ListInstanceByNameResponse listInstanceByNameResponse =
-                new Ac4yObjectObjectService(sqlConn).ListInstanceByName(
+                new Ac4yObjectObjectService(sqlConnection).ListInstanceByName(
                     new ListInstanceByNameRequest() { TemplateName = TemplateName }
                 );
 
@@ -79,7 +79,7 @@ namespace CSSaveToFileSysFW
             List<string> names = new List<string>();
 
             ListInstanceByNameResponse listInstanceByNameResponse =
-                new Ac4yObjectObjectService(sqlConn).ListInstanceByName(
+                new Ac4yObjectObjectService(sqlConnection).ListInstanceByName(
                     new ListInstanceByNameRequest() { TemplateName = TemplateName }
                 );
 
@@ -101,7 +101,7 @@ namespace CSSaveToFileSysFW
             StringToPascalCase stringToPascalCase = new StringToPascalCase();
 
             ListInstanceResponse listInstanceResponse =
-                new Ac4yObjectObjectService(sqlConn).ListInstance(
+                new Ac4yObjectObjectService(sqlConnection).ListInstance(
                     new ListInstanceRequest() { }
                 );
 
@@ -141,7 +141,7 @@ namespace CSSaveToFileSysFW
 
         public void Load()
         {
-            Ac4yObjectObjectService ac4YObjectObjectService = new Ac4yObjectObjectService(sqlConn);
+            Ac4yObjectObjectService ac4YObjectObjectService = new Ac4yObjectObjectService(sqlConnection);
 
             try
             {
@@ -165,7 +165,7 @@ namespace CSSaveToFileSysFW
                         new SetByGuidAndNamesRequest() { TemplateName = tabla.TemplateHumanId, Name = tabla.HumanId, Guid = tabla.GUID }
                         );
 
-                    if (response.Result.Code.Equals("1"))
+                    if (response.Result.Success())
                     {
                         System.IO.File.Move(outPathProcess + _filename + ".xml", outPathSuccess + _filename + ".xml");
 

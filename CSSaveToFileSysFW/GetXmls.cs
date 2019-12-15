@@ -11,22 +11,22 @@ namespace CSSaveToFileSysFW
 {
     class GetXmls
     {
-        public List<SerializationObject> GetXmlsMethod(SqlConnection conn, SqlConnection connXML, string templateName)
+        public List<SerializationObject> GetXmlsMethod(SqlConnection sqlConnection, SqlConnection sqlConnectionXML, string templateName)
         {
-            conn.Open();
+            sqlConnection.Open();
             StringToPascalCase stringToPascalCase = new StringToPascalCase();
 
             List<SerializationObject> xmls = new List<SerializationObject>();
             List<Xmls> guids = new List<Xmls>();
 
             ListInstanceByNameResponse listInstanceByNameResponse =
-                new Ac4yObjectObjectService(conn).ListInstanceByName(
+                new Ac4yObjectObjectService(sqlConnection).ListInstanceByName(
                     new ListInstanceByNameRequest() { TemplateName = templateName }
                 );
 
             string sql = "select GUID, serialization from Ac4yXMLObjects;";
             
-            using (SqlConnection connection = connXML)
+            using (SqlConnection connection = sqlConnectionXML)
             {
                 SqlCommand command = new SqlCommand(
                     sql, connection);

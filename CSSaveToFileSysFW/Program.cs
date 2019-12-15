@@ -16,21 +16,22 @@ namespace CSSaveToFileSysFW
     {
         private static readonly log4net.ILog _naplo = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
-        public static string conn = ConfigurationManager.AppSettings["connString"];
-        //public static SqlConnection sqlConn = new SqlConnection(ConfigurationManager.AppSettings["connString"]);
-        //public static SqlConnection sqlConnXML = new SqlConnection(ConfigurationManager.AppSettings["connStringXML"]);
+        public static string connectionString = ConfigurationManager.AppSettings["connectionString"];
+        //public static SqlConnection sqlConn = new SqlConnection(ConfigurationManager.AppSettings["conneectionString"]);
+        //public static SqlConnection sqlConnXML = new SqlConnection(ConfigurationManager.AppSettings["connectionStringXML"]);
         public static string TemplateName = ConfigurationManager.AppSettings["TemplateName"];
         public static string outPath = ConfigurationManager.AppSettings["Path"];
-        public static string outPathProcess = ConfigurationManager.AppSettings["PathProcess"];
-        public static string outPathSuccess = ConfigurationManager.AppSettings["PathSuccess"];
-        public static string outPathError = ConfigurationManager.AppSettings["PathError"];
+        public static string defaultPath = ConfigurationManager.AppSettings["DefaultPath"];
+        public static string outPathProcess = defaultPath + ConfigurationManager.AppSettings["PathProcess"];
+        public static string outPathSuccess = defaultPath + ConfigurationManager.AppSettings["PathSuccess"];
+        public static string outPathError = defaultPath + ConfigurationManager.AppSettings["PathError"];
 
         static void Main(string[] args)
         {
             try
             {
                 //GetXmls getXmls = new GetXmls();
-                SaveToFileSysFW saveToFileSysFW = new SaveToFileSysFW(conn, TemplateName, outPath, outPathProcess, outPathSuccess, outPathError);
+                SaveToFileSysFW saveToFileSysFW = new SaveToFileSysFW(connectionString, TemplateName, outPath, outPathProcess, outPathSuccess, outPathError);
 
                 //saveToFileSysFW.Load();
                 saveToFileSysFW.WriteOutAc4yObject();

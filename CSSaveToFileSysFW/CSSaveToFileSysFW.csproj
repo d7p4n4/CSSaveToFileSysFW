@@ -36,20 +36,25 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSAc4yFW">
-      <HintPath>..\..\..\..\..\Library\c#\LPCSharp\CSAc4yFW.dll</HintPath>
+    <Reference Include="CSAc4yFW, Version=1.2019.1206.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Library\LPCSharp\CSAc4yFW.dll</HintPath>
     </Reference>
-    <Reference Include="CSAc4yObjectDBCapFW">
-      <HintPath>..\..\..\..\..\Library\c#\LPCSharp\CSAc4yObjectDBCapFW.dll</HintPath>
+    <Reference Include="CSAc4yObjectDBCapFW, Version=1.2019.1213.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Library\LPCSharp\CSAc4yObjectDBCapFW.dll</HintPath>
     </Reference>
-    <Reference Include="CSAc4yObjectObjectServiceFW">
-      <HintPath>..\..\..\..\..\Library\c#\LPCSharp\CSAc4yObjectObjectServiceFW.dll</HintPath>
+    <Reference Include="CSAc4yObjectObjectServiceFW, Version=1.2019.1213.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Library\LPCSharp\CSAc4yObjectObjectServiceFW.dll</HintPath>
     </Reference>
-    <Reference Include="CSAc4yObjectServiceWF">
-      <HintPath>..\..\..\..\..\Library\c#\LPCSharp\CSAc4yObjectServiceWF.dll</HintPath>
+    <Reference Include="CSAc4yObjectServiceWF, Version=1.2019.1209.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Library\LPCSharp\CSAc4yObjectServiceWF.dll</HintPath>
     </Reference>
-    <Reference Include="CSAc4yServiceFW">
-      <HintPath>..\..\..\..\..\Library\c#\LPCSharp\CSAc4yServiceFW.dll</HintPath>
+    <Reference Include="CSAc4yServiceFW, Version=1.2019.1206.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Library\LPCSharp\CSAc4yServiceFW.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
