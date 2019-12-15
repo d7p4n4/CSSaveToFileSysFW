@@ -1,4 +1,4 @@
-﻿using CSAc4yService.Class;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace CSSaveToFileSysFW
+namespace CSAc4yObjectXmlExportImportFW
 {
     class Program
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSSaveToFileSysFW
+namespace CSAc4yObjectXmlExportImportFW
 {
     public class SerializationObject
     {

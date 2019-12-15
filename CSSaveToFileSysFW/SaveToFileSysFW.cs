@@ -7,7 +7,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace CSSaveToFileSysFW
+namespace CSAc4yObjectXmlExportImportFW
 {
     public class SaveToFileSysFW
     {
